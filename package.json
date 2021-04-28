@@ -1,18 +1,41 @@
 {
-  "name": "com.halodi.halodi-unity-package-registry-manager",
-  "version": "0.1.5",
-  "displayName": "Halodi Package Registry Manager",
-  "type": "tool",
-  "samples": [],
-  "description": "Simple tool to manage scoped registries and NPM credentials.",
-  "license": "Apache-2.0",
+  "name": "com.appalachia.unity3d.editor.packaging",
+  "displayName": "Packaging for Unity3D",
+  "version": "0.1.0",
+  "unity": "2020.3",
+  "description": "Models and UI for packaging in Unity3D.",
+  "keywords": [
+    "Scripts",
+    "Tool"
+  ],
+  "category": "Tool",
+  "license": "SEE LICENSE IN LICENSE.MD",
   "author": {
-    "name": "Halodi",
-    "email": "jesper@halodi.com",
-    "url": "https://halodi.com"
+    "name": "Halodi & Appalachia Interactive"
   },
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "2.0.0",
     "com.unity.sharp-zip-lib": "1.2.2-preview.1"
+  },
+  "repository": {
+    "url": "https://github.com/AppalachiaInteractive/com.appalachia.unity3d.editor.packaging.git",
+    "type": "git"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
+  "scripts": {
+    "preversion" : "bash ~/com.appalachia/appa/appa package unity3d preversion",
+    "version" : "bash ~/com.appalachia/appa/appa package unity3d version",
+    "postversion" : "bash ~/com.appalachia/appa/appa package unity3d postversion",
+    "prepack" : "bash ~/com.appalachia/appa/appa package unity3d prepack",    
+    "package" : "bash ~/com.appalachia/appa/appa package unity3d package",
+    "postpack" : "bash ~/com.appalachia/appa/appa package unity3d postpack",
+    "vscode:prepublish" : "bash ~/com.appalachia/appa/appa package unity3d vscode_prepublish",
+    "prepublishOnly" : "bash ~/com.appalachia/appa/appa package unity3d prepublishOnly",
+    "publish" : "bash ~/com.appalachia/appa/appa package unity3d publish",
+    "postpublish" : "bash ~/com.appalachia/appa/appa package unity3d postpublish"
   }
 }
+
+

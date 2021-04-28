@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HTML Diff</title>
+	<style>
+	body {
+		text-align: center;
+	}
+	#wrapper {
+		display: inline-block;
+		margin-top: 1em;
+		min-width: 800px;
+		text-align: left;
+	}
+	h2 {
+		background: #fafafa;
+		background: -moz-linear-gradient(#fafafa, #eaeaea);
+		background: -webkit-linear-gradient(#fafafa, #eaeaea);
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')";
+		border: 1px solid #d8d8d8;
+		border-bottom: 0;
+		color: #555;
+		font: 14px sans-serif;
+		overflow: hidden;
+		padding: 10px 6px;
+		text-shadow: 0 1px 0 white;
+		margin: 0;
+	}
+	.copy {
+		float: right;
+	}
+	.file-diff {
+		border: 1px solid #d8d8d8;
+		margin-bottom: 1em;
+		overflow: auto;
+		padding: 0.5em 0;
+	}
+	.file-diff > div {
+		width: 100%;
+	}
+	pre {
+		margin: 0;
+		font-family: "Bitstream Vera Sans Mono", Courier, monospace;
+		font-size: 12px;
+		line-height: 1.4em;
+		text-indent: 0.5em;
+	}
+	.file {
+		color: #aaa;
+	}
+	.delete {
+		background-color: #fdd;
+	}
+	.insert {
+		background-color: #dfd;
+	}
+	.info {
+		color: #a0b;
+	}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<h2>CHANGELOG.md<button class='copy' onclick='navigator.clipboard.writeText("CHANGELOG.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/CHANGELOG.md b/CHANGELOG.md</pre></div></div><h2>deleted file mode 100644<button class='copy' onclick='navigator.clipboard.writeText("deleted file mode 100644")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>deleted file mode 100644</pre>
+<pre class='file'>index 379298f..0000000</pre>
+<pre class='delete'>--- a/package.json.meta</pre>
+<pre class='insert'>+++ /dev/null</pre>
+<pre class='info'>@@ -1,7 +0,0 @@</pre>
+<pre class='delete'>-fileFormatVersion: 2</pre>
+<pre class='delete'>-guid: 4480134b80472dc1a847e756ab3917cc</pre>
+<pre class='delete'>-PackageManifestImporter:</pre>
+<pre class='delete'>-  externalObjects: {}</pre>
+<pre class='delete'>-  userData: </pre>
+<pre class='delete'>-  assetBundleName: </pre>
+<pre class='delete'>-  assetBundleVariant: </pre></div></div><h2>CHANGELOG.md.meta<button class='copy' onclick='navigator.clipboard.writeText("CHANGELOG.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/CHANGELOG.md.meta b/CHANGELOG.md.meta</pre></div></div><h2>Documentation~/halodi-unity-package-registry-manager-screenshot.png<button class='copy' onclick='navigator.clipboard.writeText("Documentation~/halodi-unity-package-registry-manager-screenshot.png")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Documentation~/halodi-unity-package-registry-manager-screenshot.png b/Documentation~/halodi-unity-package-registry-manager-screenshot.png</pre></div></div><h2>Editor.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor.meta b/Editor.meta</pre></div></div><h2>Editor/Halodi.PackageRegistryManager.Editor.asmdef<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi.PackageRegistryManager.Editor.asmdef")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi.PackageRegistryManager.Editor.asmdef b/Editor/Halodi.PackageRegistryManager.Editor.asmdef</pre></div></div><h2>Editor/Halodi.PackageRegistryManager.Editor.asmdef.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi.PackageRegistryManager.Editor.asmdef.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi.PackageRegistryManager.Editor.asmdef.meta b/Editor/Halodi.PackageRegistryManager.Editor.asmdef.meta</pre></div></div><h2>Editor/Halodi.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi.meta b/Editor/Halodi.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry.meta b/Editor/Halodi/PackageRegistry.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core.meta b/Editor/Halodi/PackageRegistry/Core.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/CredentialManager.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/CredentialManager.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/CredentialManager.cs b/Editor/Halodi/PackageRegistry/Core/CredentialManager.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/CredentialManager.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/CredentialManager.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/CredentialManager.cs.meta b/Editor/Halodi/PackageRegistry/Core/CredentialManager.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/RegistryManager.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/RegistryManager.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/RegistryManager.cs b/Editor/Halodi/PackageRegistry/Core/RegistryManager.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/RegistryManager.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/RegistryManager.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/RegistryManager.cs.meta b/Editor/Halodi/PackageRegistry/Core/RegistryManager.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs b/Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs.meta b/Editor/Halodi/PackageRegistry/Core/ScopedRegistry.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs b/Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs.meta b/Editor/Halodi/PackageRegistry/Core/UpgradePackagesManager.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM.meta b/Editor/Halodi/PackageRegistry/NPM.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs b/Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs.meta b/Editor/Halodi/PackageRegistry/NPM/NPMLogin.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs b/Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs.meta b/Editor/Halodi/PackageRegistry/NPM/NPMPublish.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs b/Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs.meta b/Editor/Halodi/PackageRegistry/NPM/NPMResponse.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs b/Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs.meta b/Editor/Halodi/PackageRegistry/NPM/PackageTarball.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs b/Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs.meta b/Editor/Halodi/PackageRegistry/NPM/PublicationManifest.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI.meta b/Editor/Halodi/PackageRegistry/UI.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs b/Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs.meta b/Editor/Halodi/PackageRegistry/UI/BulkAddPackages.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs b/Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs.meta b/Editor/Halodi/PackageRegistry/UI/CredentialEditorView.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs b/Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs.meta b/Editor/Halodi/PackageRegistry/UI/CredentialManagerView.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/GetTokenView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/GetTokenView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/GetTokenView.cs b/Editor/Halodi/PackageRegistry/UI/GetTokenView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/GetTokenView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/GetTokenView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/GetTokenView.cs.meta b/Editor/Halodi/PackageRegistry/UI/GetTokenView.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs b/Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs.meta b/Editor/Halodi/PackageRegistry/UI/RegistryManagerView.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs b/Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs.meta b/Editor/Halodi/PackageRegistry/UI/ScopedRegistryEditorView.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs b/Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs.meta b/Editor/Halodi/PackageRegistry/UI/SettingsProvider.cs.meta</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs b/Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs</pre></div></div><h2>Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs.meta b/Editor/Halodi/PackageRegistry/UI/UpgradePackagesView.cs.meta</pre></div></div><h2>Editor/ThirdParty.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty.meta b/Editor/ThirdParty.meta</pre></div></div><h2>Editor/ThirdParty/860BB79D.Tomlyn.dll<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/860BB79D.Tomlyn.dll")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/860BB79D.Tomlyn.dll b/Editor/ThirdParty/860BB79D.Tomlyn.dll</pre></div></div><h2>Editor/ThirdParty/860BB79D.Tomlyn.dll.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/860BB79D.Tomlyn.dll.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/860BB79D.Tomlyn.dll.meta b/Editor/ThirdParty/860BB79D.Tomlyn.dll.meta</pre></div></div><h2>Editor/ThirdParty/LICENSE.Tomlyn.md<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/LICENSE.Tomlyn.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/LICENSE.Tomlyn.md b/Editor/ThirdParty/LICENSE.Tomlyn.md</pre></div></div><h2>Editor/ThirdParty/LICENSE.Tomlyn.md.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/LICENSE.Tomlyn.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/LICENSE.Tomlyn.md.meta b/Editor/ThirdParty/LICENSE.Tomlyn.md.meta</pre></div></div><h2>Editor/ThirdParty/README.md<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/README.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/README.md b/Editor/ThirdParty/README.md</pre></div></div><h2>Editor/ThirdParty/README.md.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/README.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/README.md.meta b/Editor/ThirdParty/README.md.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer.meta b/Editor/ThirdParty/Unity-SemVer.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef b/Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef.meta b/Editor/ThirdParty/Unity-SemVer/Artees.UnitySemVer.asmdef.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs b/Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs.meta b/Editor/ThirdParty/Unity-SemVer/CloudBuildManifest.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/LICENSE<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/LICENSE")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/LICENSE b/Editor/ThirdParty/Unity-SemVer/LICENSE</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/LICENSE.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/LICENSE.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/LICENSE.meta b/Editor/ThirdParty/Unity-SemVer/LICENSE.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/README.md<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/README.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/README.md b/Editor/ThirdParty/Unity-SemVer/README.md</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/README.md.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/README.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/README.md.meta b/Editor/ThirdParty/Unity-SemVer/README.md.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVer.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVer.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVer.cs b/Editor/ThirdParty/Unity-SemVer/SemVer.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVer.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVer.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVer.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVer.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs b/Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerAttribute.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs b/Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerAutoBuild.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs b/Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerComparer.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs b/Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerConverter.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs b/Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerErrorMessage.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs b/Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerValidationResult.cs.meta</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs b/Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs</pre></div></div><h2>Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs.meta b/Editor/ThirdParty/Unity-SemVer/SemVerValidator.cs.meta</pre></div></div><h2>LICENSE.md<button class='copy' onclick='navigator.clipboard.writeText("LICENSE.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/LICENSE.md b/LICENSE.md</pre>
+<pre class='file'>index d645695..cedc0ec 100644</pre>
+<pre class='delete'>--- a/LICENSE.md</pre>
+<pre class='insert'>+++ b/LICENSE.md</pre>
+<pre class='info'>@@ -1,202 +1,5 @@</pre>
+<pre class='insert'>+This project contains 2 licenses.  </pre>
+<pre class='insert'>+All software commited at or before commit hash 2fbfd2d15bdb15164d29a8557f274cdf607ee798 is licensed under the APL by Halodi and/or the individual contributors, which this project history will show.  This license can be found in `LICENSE.ORIGINAL.md`.</pre>
+<pre class='insert'>+All work after commit 2fbfd2d15bdb15164d29a8557f274cdf607ee798 is licensed under the MIT by Appalachia Interactive.  This license can be found in `LICENSE.UPDATED.md`</pre>
+<pre class='context'> </pre>
+<pre class='delete'>-                                 Apache License</pre>
+<pre class='delete'>-                           Version 2.0, January 2004</pre>
+<pre class='delete'>-                        http://www.apache.org/licenses/</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   1. Definitions.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "License" shall mean the terms and conditions for use, reproduction,</pre>
+<pre class='delete'>-      and distribution as defined by Sections 1 through 9 of this document.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Licensor" shall mean the copyright owner or entity authorized by</pre>
+<pre class='delete'>-      the copyright owner that is granting the License.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Legal Entity" shall mean the union of the acting entity and all</pre>
+<pre class='delete'>-      other entities that control, are controlled by, or are under common</pre>
+<pre class='delete'>-      control with that entity. For the purposes of this definition,</pre>
+<pre class='delete'>-      "control" means (i) the power, direct or indirect, to cause the</pre>
+<pre class='delete'>-      direction or management of such entity, whether by contract or</pre>
+<pre class='delete'>-      otherwise, or (ii) ownership of fifty percent (50%) or more of the</pre>
+<pre class='delete'>-      outstanding shares, or (iii) beneficial ownership of such entity.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "You" (or "Your") shall mean an individual or Legal Entity</pre>
+<pre class='delete'>-      exercising permissions granted by this License.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Source" form shall mean the preferred form for making modifications,</pre>
+<pre class='delete'>-      including but not limited to software source code, documentation</pre>
+<pre class='delete'>-      source, and configuration files.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Object" form shall mean any form resulting from mechanical</pre>
+<pre class='delete'>-      transformation or translation of a Source form, including but</pre>
+<pre class='delete'>-      not limited to compiled object code, generated documentation,</pre>
+<pre class='delete'>-      and conversions to other media types.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Work" shall mean the work of authorship, whether in Source or</pre>
+<pre class='delete'>-      Object form, made available under the License, as indicated by a</pre>
+<pre class='delete'>-      copyright notice that is included in or attached to the work</pre>
+<pre class='delete'>-      (an example is provided in the Appendix below).</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Derivative Works" shall mean any work, whether in Source or Object</pre>
+<pre class='delete'>-      form, that is based on (or derived from) the Work and for which the</pre>
+<pre class='delete'>-      editorial revisions, annotations, elaborations, or other modifications</pre>
+<pre class='delete'>-      represent, as a whole, an original work of authorship. For the purposes</pre>
+<pre class='delete'>-      of this License, Derivative Works shall not include works that remain</pre>
+<pre class='delete'>-      separable from, or merely link (or bind by name) to the interfaces of,</pre>
+<pre class='delete'>-      the Work and Derivative Works thereof.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Contribution" shall mean any work of authorship, including</pre>
+<pre class='delete'>-      the original version of the Work and any modifications or additions</pre>
+<pre class='delete'>-      to that Work or Derivative Works thereof, that is intentionally</pre>
+<pre class='delete'>-      submitted to Licensor for inclusion in the Work by the copyright owner</pre>
+<pre class='delete'>-      or by an individual or Legal Entity authorized to submit on behalf of</pre>
+<pre class='delete'>-      the copyright owner. For the purposes of this definition, "submitted"</pre>
+<pre class='delete'>-      means any form of electronic, verbal, or written communication sent</pre>
+<pre class='delete'>-      to the Licensor or its representatives, including but not limited to</pre>
+<pre class='delete'>-      communication on electronic mailing lists, source code control systems,</pre>
+<pre class='delete'>-      and issue tracking systems that are managed by, or on behalf of, the</pre>
+<pre class='delete'>-      Licensor for the purpose of discussing and improving the Work, but</pre>
+<pre class='delete'>-      excluding communication that is conspicuously marked or otherwise</pre>
+<pre class='delete'>-      designated in writing by the copyright owner as "Not a Contribution."</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      "Contributor" shall mean Licensor and any individual or Legal Entity</pre>
+<pre class='delete'>-      on behalf of whom a Contribution has been received by Licensor and</pre>
+<pre class='delete'>-      subsequently incorporated within the Work.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   2. Grant of Copyright License. Subject to the terms and conditions of</pre>
+<pre class='delete'>-      this License, each Contributor hereby grants to You a perpetual,</pre>
+<pre class='delete'>-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable</pre>
+<pre class='delete'>-      copyright license to reproduce, prepare Derivative Works of,</pre>
+<pre class='delete'>-      publicly display, publicly perform, sublicense, and distribute the</pre>
+<pre class='delete'>-      Work and such Derivative Works in Source or Object form.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   3. Grant of Patent License. Subject to the terms and conditions of</pre>
+<pre class='delete'>-      this License, each Contributor hereby grants to You a perpetual,</pre>
+<pre class='delete'>-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable</pre>
+<pre class='delete'>-      (except as stated in this section) patent license to make, have made,</pre>
+<pre class='delete'>-      use, offer to sell, sell, import, and otherwise transfer the Work,</pre>
+<pre class='delete'>-      where such license applies only to those patent claims licensable</pre>
+<pre class='delete'>-      by such Contributor that are necessarily infringed by their</pre>
+<pre class='delete'>-      Contribution(s) alone or by combination of their Contribution(s)</pre>
+<pre class='delete'>-      with the Work to which such Contribution(s) was submitted. If You</pre>
+<pre class='delete'>-      institute patent litigation against any entity (including a</pre>
+<pre class='delete'>-      cross-claim or counterclaim in a lawsuit) alleging that the Work</pre>
+<pre class='delete'>-      or a Contribution incorporated within the Work constitutes direct</pre>
+<pre class='delete'>-      or contributory patent infringement, then any patent licenses</pre>
+<pre class='delete'>-      granted to You under this License for that Work shall terminate</pre>
+<pre class='delete'>-      as of the date such litigation is filed.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   4. Redistribution. You may reproduce and distribute copies of the</pre>
+<pre class='delete'>-      Work or Derivative Works thereof in any medium, with or without</pre>
+<pre class='delete'>-      modifications, and in Source or Object form, provided that You</pre>
+<pre class='delete'>-      meet the following conditions:</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      (a) You must give any other recipients of the Work or</pre>
+<pre class='delete'>-          Derivative Works a copy of this License; and</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      (b) You must cause any modified files to carry prominent notices</pre>
+<pre class='delete'>-          stating that You changed the files; and</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      (c) You must retain, in the Source form of any Derivative Works</pre>
+<pre class='delete'>-          that You distribute, all copyright, patent, trademark, and</pre>
+<pre class='delete'>-          attribution notices from the Source form of the Work,</pre>
+<pre class='delete'>-          excluding those notices that do not pertain to any part of</pre>
+<pre class='delete'>-          the Derivative Works; and</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      (d) If the Work includes a "NOTICE" text file as part of its</pre>
+<pre class='delete'>-          distribution, then any Derivative Works that You distribute must</pre>
+<pre class='delete'>-          include a readable copy of the attribution notices contained</pre>
+<pre class='delete'>-          within such NOTICE file, excluding those notices that do not</pre>
+<pre class='delete'>-          pertain to any part of the Derivative Works, in at least one</pre>
+<pre class='delete'>-          of the following places: within a NOTICE text file distributed</pre>
+<pre class='delete'>-          as part of the Derivative Works; within the Source form or</pre>
+<pre class='delete'>-          documentation, if provided along with the Derivative Works; or,</pre>
+<pre class='delete'>-          within a display generated by the Derivative Works, if and</pre>
+<pre class='delete'>-          wherever such third-party notices normally appear. The contents</pre>
+<pre class='delete'>-          of the NOTICE file are for informational purposes only and</pre>
+<pre class='delete'>-          do not modify the License. You may add Your own attribution</pre>
+<pre class='delete'>-          notices within Derivative Works that You distribute, alongside</pre>
+<pre class='delete'>-          or as an addendum to the NOTICE text from the Work, provided</pre>
+<pre class='delete'>-          that such additional attribution notices cannot be construed</pre>
+<pre class='delete'>-          as modifying the License.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      You may add Your own copyright statement to Your modifications and</pre>
+<pre class='delete'>-      may provide additional or different license terms and conditions</pre>
+<pre class='delete'>-      for use, reproduction, or distribution of Your modifications, or</pre>
+<pre class='delete'>-      for any such Derivative Works as a whole, provided Your use,</pre>
+<pre class='delete'>-      reproduction, and distribution of the Work otherwise complies with</pre>
+<pre class='delete'>-      the conditions stated in this License.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   5. Submission of Contributions. Unless You explicitly state otherwise,</pre>
+<pre class='delete'>-      any Contribution intentionally submitted for inclusion in the Work</pre>
+<pre class='delete'>-      by You to the Licensor shall be under the terms and conditions of</pre>
+<pre class='delete'>-      this License, without any additional terms or conditions.</pre>
+<pre class='delete'>-      Notwithstanding the above, nothing herein shall supersede or modify</pre>
+<pre class='delete'>-      the terms of any separate license agreement you may have executed</pre>
+<pre class='delete'>-      with Licensor regarding such Contributions.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   6. Trademarks. This License does not grant permission to use the trade</pre>
+<pre class='delete'>-      names, trademarks, service marks, or product names of the Licensor,</pre>
+<pre class='delete'>-      except as required for reasonable and customary use in describing the</pre>
+<pre class='delete'>-      origin of the Work and reproducing the content of the NOTICE file.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   7. Disclaimer of Warranty. Unless required by applicable law or</pre>
+<pre class='delete'>-      agreed to in writing, Licensor provides the Work (and each</pre>
+<pre class='delete'>-      Contributor provides its Contributions) on an "AS IS" BASIS,</pre>
+<pre class='delete'>-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or</pre>
+<pre class='delete'>-      implied, including, without limitation, any warranties or conditions</pre>
+<pre class='delete'>-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A</pre>
+<pre class='delete'>-      PARTICULAR PURPOSE. You are solely responsible for determining the</pre>
+<pre class='delete'>-      appropriateness of using or redistributing the Work and assume any</pre>
+<pre class='delete'>-      risks associated with Your exercise of permissions under this License.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   8. Limitation of Liability. In no event and under no legal theory,</pre>
+<pre class='delete'>-      whether in tort (including negligence), contract, or otherwise,</pre>
+<pre class='delete'>-      unless required by applicable law (such as deliberate and grossly</pre>
+<pre class='delete'>-      negligent acts) or agreed to in writing, shall any Contributor be</pre>
+<pre class='delete'>-      liable to You for damages, including any direct, indirect, special,</pre>
+<pre class='delete'>-      incidental, or consequential damages of any character arising as a</pre>
+<pre class='delete'>-      result of this License or out of the use or inability to use the</pre>
+<pre class='delete'>-      Work (including but not limited to damages for loss of goodwill,</pre>
+<pre class='delete'>-      work stoppage, computer failure or malfunction, or any and all</pre>
+<pre class='delete'>-      other commercial damages or losses), even if such Contributor</pre>
+<pre class='delete'>-      has been advised of the possibility of such damages.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   9. Accepting Warranty or Additional Liability. While redistributing</pre>
+<pre class='delete'>-      the Work or Derivative Works thereof, You may choose to offer,</pre>
+<pre class='delete'>-      and charge a fee for, acceptance of support, warranty, indemnity,</pre>
+<pre class='delete'>-      or other liability obligations and/or rights consistent with this</pre>
+<pre class='delete'>-      License. However, in accepting such obligations, You may act only</pre>
+<pre class='delete'>-      on Your own behalf and on Your sole responsibility, not on behalf</pre>
+<pre class='delete'>-      of any other Contributor, and only if You agree to indemnify,</pre>
+<pre class='delete'>-      defend, and hold each Contributor harmless for any liability</pre>
+<pre class='delete'>-      incurred by, or claims asserted against, such Contributor by reason</pre>
+<pre class='delete'>-      of your accepting any such warranty or additional liability.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   END OF TERMS AND CONDITIONS</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   APPENDIX: How to apply the Apache License to your work.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      To apply the Apache License to your work, attach the following</pre>
+<pre class='delete'>-      boilerplate notice, with the fields enclosed by brackets "[]"</pre>
+<pre class='delete'>-      replaced with your own identifying information. (Don't include</pre>
+<pre class='delete'>-      the brackets!)  The text should be enclosed in the appropriate</pre>
+<pre class='delete'>-      comment syntax for the file format. We also recommend that a</pre>
+<pre class='delete'>-      file or class name and description of purpose be included on the</pre>
+<pre class='delete'>-      same "printed page" as the copyright notice for easier</pre>
+<pre class='delete'>-      identification within third-party archives.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   Copyright [yyyy] [name of copyright owner]</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   Licensed under the Apache License, Version 2.0 (the "License");</pre>
+<pre class='delete'>-   you may not use this file except in compliance with the License.</pre>
+<pre class='delete'>-   You may obtain a copy of the License at</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-       http://www.apache.org/licenses/LICENSE-2.0</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-   Unless required by applicable law or agreed to in writing, software</pre>
+<pre class='delete'>-   distributed under the License is distributed on an "AS IS" BASIS,</pre>
+<pre class='delete'>-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</pre>
+<pre class='delete'>-   See the License for the specific language governing permissions and</pre>
+<pre class='delete'>-   limitations under the License.</pre>
+<pre class='insert'>+Modifications to the original Halodi project will be noted in MODIFICATIONS.md.</pre></div></div><h2>LICENSE.md.meta<button class='copy' onclick='navigator.clipboard.writeText("LICENSE.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/LICENSE.md.meta b/LICENSE.md.meta</pre></div></div><h2>README.md<button class='copy' onclick='navigator.clipboard.writeText("README.md")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/README.md b/README.md</pre>
+<pre class='file'>index a299464..48cadec 100644</pre>
+<pre class='delete'>--- a/README.md</pre>
+<pre class='insert'>+++ b/README.md</pre>
+<pre class='info'>@@ -1,93 +1,5 @@</pre>
+<pre class='delete'>-# Halodi Unity Package Registry Manager</pre>
+<pre class='insert'>+# Packaging for Unity3D</pre>
+<pre class='insert'>+## com.appalachia.unity3d.editor.packaging</pre>
+<pre class='insert'>+### Created by Halodi</pre>
+<pre class='context'> </pre>
+<pre class='delete'>-This package provides a simple UI to edit scoped registries and set credentials.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-To manage package creation and publication, take a look at [Halodi Unity Package Creator  ](https://github.com/Halodi/halodi-unity-package-creator).</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-![Screenshot of main functionality](Documentation~/halodi-unity-package-registry-manager-screenshot.png)</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## License</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Apache 2.0</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## Installation</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-In Unity, go to Window -&gt; Package Manager.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Add package from git url (press the + in the top left of the Window). Use the repository URL for this package:</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-```</pre>
+<pre class='delete'>-https://github.com/Halodi/halodi-unity-package-registry-manager.git</pre>
+<pre class='delete'>-```</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## Usage </pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-After installation a new menu "Packages" will appear.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-### Manage credentials</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Under "Manage credential" you can add, edit and remove credentials in ~/.upmconfig.toml. </pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Each registry logs in using a token. If your NPM provider provides a token directly, enter it here. If your provider requires a login, select the method and press "Get Token". Enter required information and press "Login". A token will be requested from the registry. The login information will not get saved.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-To always authenticate, set "Always auth" to true;</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-After setting the registry credentials, it is advised to restart Unity to reload the package manager.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-#### Notes for specific providers</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-**Github**: Create a [Personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line), make sure to select "read:packages" for adding packages to a project and "write:packages" if you want to publish packages. Copy the personal access token directly in the "Token" field (ignore Generate Token).</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-**Bintray**: In Generate Token, select "bintray" as method and press "Get token". Enter your credentials. Note: Your credentials are not checked here, the token is calculated from your credentials.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-**Verdaccio**: In Generate Token, select "npm login" as method and press "Get token". Enter your credentials.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-### Manage scoped registries</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Using "Manage scoped registries" you can add, edit and remove scoped registries from the projects package manifest.json.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-In the same dialog, you can set the credentials for scoped registries. If no token is set, the credentials will be removed from the credential database. For more information, see "Manage credentials".</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Note: The authentication settings are saved per-computer, not per project. If you have multiple projects with the same scoped registry, the authentication parameters will be shared.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-### Add Packages (Bulk)</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Utility to add a list of packages. </pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Utility could include</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-- Sharing a list of packages to be bulk imported a project by copy-pasting</pre>
+<pre class='delete'>-- Adding packages when the registry does not support listing all packages</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Note: The Editor will freeze while downloading the packages. This is expected. A popup with the imported packages will appear when done.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## Library functions</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-This library provides basic NPM functionality in [Halodi.PackageRegistry.NPM](Editor/Halodi/PackageRegistry/NPM.cs). The following functions are implemented</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-### NPM.GetLoginToken(string url, string user, string password)</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Same as "npm login --registry [url]". Returns a NPMResponse struct. </pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-If succesfull, NPMResponse.ok will be set and NPMResponse.token will contain the token.</pre>
+<pre class='delete'>-If a fault happend, NPMREsponse.error will be set to the error.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-### NPM.Publish(string packageFolder, string registry)</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Same as "npm publish --registry [registry]" executed in "packageFolder".</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-The publish functionality uses the credentials set in "~/.upmconfig.toml" to publish to the registry. Use "Manage registries" to set the credentials.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-The package tarball is created using SharpZipLib, to avoid compatibility issues with PackageManager.Client.Pack() in Unity.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Throws a System.IO.IOException if an error occurs.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## Bugs and feature requests</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-Please open a ticket on Github. Pull requests are encouraged.</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-## Maintainer</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-[Jesper](jesper@halodi.com)</pre>
+<pre class='insert'>+Models and UI for packaging in Unity3D.</pre>
+<pre class='undefined'>\ No newline at end of file</pre></div></div><h2>README.md.meta<button class='copy' onclick='navigator.clipboard.writeText("README.md.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/README.md.meta b/README.md.meta</pre></div></div><h2>Tests.meta<button class='copy' onclick='navigator.clipboard.writeText("Tests.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests.meta b/Tests.meta</pre></div></div><h2>Tests/Editor.meta<button class='copy' onclick='navigator.clipboard.writeText("Tests/Editor.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests/Editor.meta b/Tests/Editor.meta</pre></div></div><h2>Tests/Editor/AssemblyInfo.cs<button class='copy' onclick='navigator.clipboard.writeText("Tests/Editor/AssemblyInfo.cs")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests/Editor/AssemblyInfo.cs b/Tests/Editor/AssemblyInfo.cs</pre></div></div><h2>Tests/Editor/AssemblyInfo.cs.meta<button class='copy' onclick='navigator.clipboard.writeText("Tests/Editor/AssemblyInfo.cs.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests/Editor/AssemblyInfo.cs.meta b/Tests/Editor/AssemblyInfo.cs.meta</pre></div></div><h2>Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef<button class='copy' onclick='navigator.clipboard.writeText("Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef b/Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef</pre></div></div><h2>Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef.meta<button class='copy' onclick='navigator.clipboard.writeText("Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef.meta b/Tests/Editor/Halodi.PackageRegistryManager.Tests.asmdef.meta</pre></div></div><h2>package.json<button class='copy' onclick='navigator.clipboard.writeText("package.json")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/package.json b/package.json</pre>
+<pre class='file'>index 928a2d7..13210aa 100644</pre>
+<pre class='delete'>--- a/package.json</pre>
+<pre class='insert'>+++ b/package.json</pre>
+<pre class='info'>@@ -1,18 +1,39 @@</pre>
+<pre class='context'> {</pre>
+<pre class='delete'>-  "name": "com.halodi.halodi-unity-package-registry-manager",</pre>
+<pre class='delete'>-  "version": "0.1.5",</pre>
+<pre class='delete'>-  "displayName": "Halodi Package Registry Manager",</pre>
+<pre class='delete'>-  "type": "tool",</pre>
+<pre class='delete'>-  "samples": [],</pre>
+<pre class='delete'>-  "description": "Simple tool to manage scoped registries and NPM credentials.",</pre>
+<pre class='delete'>-  "license": "Apache-2.0",</pre>
+<pre class='insert'>+  "name": "com.appalachia.unity3d.editor.packaging",</pre>
+<pre class='insert'>+  "displayName": "Packaging for Unity3D",</pre>
+<pre class='insert'>+  "version": "0.1.0",</pre>
+<pre class='insert'>+  "unity": "2020.3",</pre>
+<pre class='insert'>+  "description": "Models and UI for packaging in Unity3D.",</pre>
+<pre class='insert'>+  "keywords": [</pre>
+<pre class='insert'>+    "Scripts",</pre>
+<pre class='insert'>+    "Tool"</pre>
+<pre class='insert'>+  ],</pre>
+<pre class='insert'>+  "category": "Tool",</pre>
+<pre class='insert'>+  "license": "SEE LICENSE IN LICENSE.MD",</pre>
+<pre class='context'>   "author": {</pre>
+<pre class='delete'>-    "name": "Halodi",</pre>
+<pre class='delete'>-    "email": "jesper@halodi.com",</pre>
+<pre class='delete'>-    "url": "https://halodi.com"</pre>
+<pre class='insert'>+    "name": "Halodi"</pre>
+<pre class='context'>   },</pre>
+<pre class='context'>   "dependencies": {</pre>
+<pre class='delete'>-    "com.unity.nuget.newtonsoft-json": "2.0.0",</pre>
+<pre class='delete'>-    "com.unity.sharp-zip-lib": "1.2.2-preview.1"</pre>
+<pre class='insert'>+  },</pre>
+<pre class='insert'>+  "repository": {</pre>
+<pre class='insert'>+    "url": "https://github.com/AppalachiaInteractive/com.appalachia.unity3d.editor.packaging.git",</pre>
+<pre class='insert'>+    "type": "git"</pre>
+<pre class='insert'>+  },</pre>
+<pre class='insert'>+  "publishConfig": {</pre>
+<pre class='insert'>+    "registry": "http://localhost:4873/"</pre>
+<pre class='insert'>+  },</pre>
+<pre class='insert'>+  "scripts": {</pre>
+<pre class='insert'>+    "preversion" : "bash ~/com.appalachia/appa/appa package unity3d preversion",</pre>
+<pre class='insert'>+    "version" : "bash ~/com.appalachia/appa/appa package unity3d version",</pre>
+<pre class='insert'>+    "postversion" : "bash ~/com.appalachia/appa/appa package unity3d postversion",</pre>
+<pre class='insert'>+    "prepack" : "bash ~/com.appalachia/appa/appa package unity3d prepack",    </pre>
+<pre class='insert'>+    "package" : "bash ~/com.appalachia/appa/appa package unity3d package",</pre>
+<pre class='insert'>+    "postpack" : "bash ~/com.appalachia/appa/appa package unity3d postpack",</pre>
+<pre class='insert'>+    "vscode:prepublish" : "bash ~/com.appalachia/appa/appa package unity3d vscode_prepublish",</pre>
+<pre class='insert'>+    "prepublishOnly" : "bash ~/com.appalachia/appa/appa package unity3d prepublishOnly",</pre>
+<pre class='insert'>+    "publish" : "bash ~/com.appalachia/appa/appa package unity3d publish",</pre>
+<pre class='insert'>+    "postpublish" : "bash ~/com.appalachia/appa/appa package unity3d postpublish"</pre>
+<pre class='context'>   }</pre>
+<pre class='context'> }</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+</pre></div></div><h2>package.json.meta<button class='copy' onclick='navigator.clipboard.writeText("package.json.meta")'>copy path</button></h2><div class='file-diff'><div><pre class='file'>diff --git a/package.json.meta b/package.json.meta</pre></div></div>
+</div>
+</body>
+</html>
+
