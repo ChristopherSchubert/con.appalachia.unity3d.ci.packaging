@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.src.Editor.AssemblyDefinitions
+namespace Appalachia.CI.Packaging.AssemblyDefinitions
 {
     public class GitRepository
     {
