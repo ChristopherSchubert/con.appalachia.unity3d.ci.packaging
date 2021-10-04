@@ -16,31 +16,12 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
     public class CredentialManager
     {
-        private string upmconfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".upmconfig.toml");
-        private List<NPMCredential> credentials = new List<NPMCredential>();
-        
-        public List<NPMCredential> CredentialSet
-        {
-            get
-            {
-                return credentials;
-            }
-        }
+        private readonly List<NPMCredential> credentials = new();
 
-        public String[] Registries
-        {
-            get
-            {
-                String[] urls = new String[credentials.Count];
-                int index = 0;
-                foreach (NPMCredential cred in CredentialSet)
-                {
-                    urls[index] = cred.url;
-                    ++index;
-                }
-                return urls;
-            }
-        }
+        private readonly string upmconfigFile = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            ".upmconfig.toml"
+        );
 
         public CredentialManager()
         {
@@ -48,9 +29,27 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
             {
                 var text = File.ReadAllText(upmconfigFile);
                 var config = JsonConvert.DeserializeObject<NPMCredential[]>(text);
-                
+
                 credentials.Clear();
                 credentials.AddRange(config);
+            }
+        }
+
+        public List<NPMCredential> CredentialSet => credentials;
+
+        public string[] Registries
+        {
+            get
+            {
+                var urls = new string[credentials.Count];
+                var index = 0;
+                foreach (var cred in CredentialSet)
+                {
+                    urls[index] = cred.url;
+                    ++index;
+                }
+
+                return urls;
             }
         }
 
@@ -76,7 +75,9 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
         public NPMCredential GetCredential(string url)
         {
-            return credentials.FirstOrDefault(x => x.url?.Equals(url, StringComparison.Ordinal) ?? false);
+            return credentials.FirstOrDefault(
+                x => x.url?.Equals(url, StringComparison.Ordinal) ?? false
+            );
         }
 
         public void SetCredential(string url, bool alwaysAuth, string token)
@@ -90,7 +91,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
             }
             else
             {
-                NPMCredential newCred = new NPMCredential();
+                var newCred = new NPMCredential();
                 newCred.url = url;
                 newCred.alwaysAuth = alwaysAuth;
                 newCred.token = token;
@@ -107,5 +108,4 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
             }
         }
     }
-
 }

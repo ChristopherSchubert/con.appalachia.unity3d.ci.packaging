@@ -6,30 +6,29 @@ using UnityEngine;
 
 namespace Appalachia.CI.Packaging.PackageRegistry.NPM
 {
-    [System.Serializable]
+    [Serializable]
     internal class NPMLoginRequest
     {
         public string name;
         public string password;
     }
 
-
-    public class ExpectContinueAware : System.Net.WebClient
+    public class ExpectContinueAware : WebClient
     {
-        protected override System.Net.WebRequest GetWebRequest(Uri address)
+        protected override WebRequest GetWebRequest(Uri address)
         {
-            System.Net.WebRequest request = base.GetWebRequest(address);
-            if (request is System.Net.HttpWebRequest)
+            var request = base.GetWebRequest(address);
+            if (request is HttpWebRequest)
             {
-                var hwr = request as System.Net.HttpWebRequest;
+                var hwr = request as HttpWebRequest;
                 hwr.ServicePoint.Expect100Continue = false;
                 hwr.AllowAutoRedirect = false;
             }
+
             return request;
         }
     }
 
-    
     public class NPMLogin
     {
         internal static string UrlCombine(string start, string more)
@@ -38,7 +37,8 @@ namespace Appalachia.CI.Packaging.PackageRegistry.NPM
             {
                 return more;
             }
-            else if (string.IsNullOrEmpty(more))
+
+            if (string.IsNullOrEmpty(more))
             {
                 return start;
             }
@@ -55,21 +55,29 @@ namespace Appalachia.CI.Packaging.PackageRegistry.NPM
         {
             using (var client = new WebClient())
             {
-                string loginUri = UrlCombine(url, "/-/user/org.couchdb.user:" + user);
-                client.Headers.Add(HttpRequestHeader.Accept, "application/json");
+                var loginUri = UrlCombine(url, "/-/user/org.couchdb.user:" + user);
+                client.Headers.Add(HttpRequestHeader.Accept,      "application/json");
                 client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(user + ":" + password)));
-                
-                NPMLoginRequest request = new NPMLoginRequest();
+                client.Headers.Add(
+                    HttpRequestHeader.Authorization,
+                    "Basic " +
+                    Convert.ToBase64String(Encoding.ASCII.GetBytes(user + ":" + password))
+                );
+
+                var request = new NPMLoginRequest();
                 request.name = user;
                 request.password = password;
-                
-                string requestString = JsonUtility.ToJson(request);
-                
+
+                var requestString = JsonUtility.ToJson(request);
+
                 try
                 {
-                    string responseString = client.UploadString(loginUri, WebRequestMethods.Http.Put, requestString);
-                    NPMResponse response = JsonUtility.FromJson<NPMResponse>(responseString);
+                    var responseString = client.UploadString(
+                        loginUri,
+                        WebRequestMethods.Http.Put,
+                        requestString
+                    );
+                    var response = JsonUtility.FromJson<NPMResponse>(responseString);
                     return response;
                 }
                 catch (WebException e)
@@ -78,10 +86,11 @@ namespace Appalachia.CI.Packaging.PackageRegistry.NPM
                     {
                         try
                         {
-                            Stream receiveStream = e.Response.GetResponseStream();
+                            var receiveStream = e.Response.GetResponseStream();
+
                             // Pipes the stream to a higher level stream reader with the required encoding format.
-                            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                            string responseString = readStream.ReadToEnd();
+                            var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                            var responseString = readStream.ReadToEnd();
                             e.Response.Close();
                             readStream.Close();
 
@@ -89,24 +98,19 @@ namespace Appalachia.CI.Packaging.PackageRegistry.NPM
                         }
                         catch (Exception e2)
                         {
-                            NPMResponse response = new NPMResponse();
+                            var response = new NPMResponse();
                             response.error = e2.Message;
                             return response;
                         }
                     }
-                    else
+
                     {
-                        NPMResponse response = new NPMResponse();
+                        var response = new NPMResponse();
                         response.error = e.Message;
                         return response;
                     }
                 }
             }
         }
-
-
-
-
     }
-
 }
