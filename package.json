@@ -1,7 +1,7 @@
 {
   "name": "com.appalachia.unity3d.ci.packaging",
   "displayName": "Packaging for Unity3D",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "unity": "2020.3",
   "description": "Models and UI for packaging in Unity3D.",
   "keywords": [
