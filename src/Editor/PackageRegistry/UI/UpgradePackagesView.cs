@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEditor;
 using UnityEngine;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
     internal class UpgradePackagesView : EditorWindow
     {

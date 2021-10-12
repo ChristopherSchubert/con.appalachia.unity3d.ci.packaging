@@ -1,6 +1,6 @@
 using System;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
     [Serializable]
     public class NPMResponse

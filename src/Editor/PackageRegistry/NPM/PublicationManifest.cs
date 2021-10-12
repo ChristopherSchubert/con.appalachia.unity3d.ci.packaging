@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
     /// <summary>
     ///     Helper class to create the JSON data to upload to the package server

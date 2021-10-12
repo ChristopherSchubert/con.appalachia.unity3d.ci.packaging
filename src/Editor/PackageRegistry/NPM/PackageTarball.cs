@@ -2,7 +2,7 @@ using System.IO;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
     /// <summary>
     ///     Tool to create tarballs for packages.

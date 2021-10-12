@@ -4,31 +4,8 @@ using System.Net;
 using System.Text;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
-    [Serializable]
-    internal class NPMLoginRequest
-    {
-        public string name;
-        public string password;
-    }
-
-    public class ExpectContinueAware : WebClient
-    {
-        protected override WebRequest GetWebRequest(Uri address)
-        {
-            var request = base.GetWebRequest(address);
-            if (request is HttpWebRequest)
-            {
-                var hwr = request as HttpWebRequest;
-                hwr.ServicePoint.Expect100Continue = false;
-                hwr.AllowAutoRedirect = false;
-            }
-
-            return request;
-        }
-    }
-
     public class NPMLogin
     {
         internal static string UrlCombine(string start, string more)

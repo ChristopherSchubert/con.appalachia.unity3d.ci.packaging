@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
     [Serializable]
     public class ScopedRegistry

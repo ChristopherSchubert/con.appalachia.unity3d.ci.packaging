@@ -1,9 +1,9 @@
 using System;
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
     internal class CredentialEditorView : EditorWindow
     {

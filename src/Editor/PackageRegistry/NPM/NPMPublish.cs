@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
     public class NPMPublish
     {

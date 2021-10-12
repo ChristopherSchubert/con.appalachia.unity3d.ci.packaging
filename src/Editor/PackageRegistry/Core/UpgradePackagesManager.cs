@@ -5,7 +5,7 @@ using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
     public class UpgradePackagesManager
     {

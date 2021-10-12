@@ -1,77 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using Appalachia.CI.Packaging.PackageRegistry.NPM;
-using Newtonsoft.Json.Linq;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.Assemblies;
+using Appalachia.CI.Integration.Repositories;
 using UnityEditor;
-using UnityEditorInternal;
-using UnityEngine;
 
-namespace Appalachia.CI.Packaging.AssemblyDefinitions
+namespace Appalachia.CI.Packaging.Editor.AssemblyDefinitions
 {
-    public class GitRepository
-    {
-        public JObject packageJson;
-        public DirectoryInfo repositoryGitFolder;
-        public DirectoryInfo repositoryRoot;
-
-        public override string ToString()
-        {
-            return $"{repositoryRoot.FullName}: {packageJson["version"]}";
-        }
-    }
-
-    public class AssemblyDefinitionModelWrapper
-    {
-        public string fileId;
-
-        public string filePath;
-        public AssemblyDefinitionModel model;
-        public GitRepository repository;
-
-        public AssemblyDefinitionModelWrapper(
-            string filePath,
-            string fileId,
-            AssemblyDefinitionModel model)
-        {
-            this.filePath = filePath;
-            this.fileId = fileId;
-            this.model = model;
-        }
-
-        public bool IsPackage => filePath.StartsWith("Package");
-        public bool IsAsset => filePath.StartsWith("Asset");
-    }
-
-    [Serializable]
-    public class AssemblyDefinitionModel
-    {
-        public string name;
-        public string rootNamespace;
-        public string[] references;
-        public string[] includePlatforms;
-        public string[] excludePlatforms;
-        public bool allowUnsafeCode;
-        public bool overrideReferences;
-        public string[] precompiledReferences;
-        public bool autoReferenced;
-        public string[] defineConstraints;
-        public string[] versionDefines;
-        public bool noEngineReferences;
-    }
-
     public static class AssemblyManager
     {
-        public static List<GitRepository> repositories;
-        public static List<AssemblyDefinitionModelWrapper> assetAssemblies;
-        public static Dictionary<string, AssemblyDefinitionModelWrapper> assemblyLookup;
+        public static List<RepositoryDirectoryMetadata> repositories;
+        public static List<AssemblyDefinitionMetadata> assetAssemblies;
+        public static Dictionary<string, AssemblyDefinitionMetadata> assemblyLookup;
 
-        [InitializeOnLoadMethod]
+        //[InitializeOnLoadMethod]
         public static void InitializeAssemblies()
         {
-            assetAssemblies = new List<AssemblyDefinitionModelWrapper>();
-            assemblyLookup = new Dictionary<string, AssemblyDefinitionModelWrapper>();
-            repositories = new List<GitRepository>();
+            assetAssemblies = new List<AssemblyDefinitionMetadata>();
+            assemblyLookup = new Dictionary<string, AssemblyDefinitionMetadata>();
+            repositories = new List<RepositoryDirectoryMetadata>();
 
             var assemblyDefinitionFileIds = AssetDatabase.FindAssets("t:AssemblyDefinitionAsset");
 
@@ -80,19 +27,7 @@ namespace Appalachia.CI.Packaging.AssemblyDefinitions
                 var assemblyDefinitionFilePath =
                     AssetDatabase.GUIDToAssetPath(assemblyDefinitionFileId);
 
-                var assemblyDefinition =
-                    AssetDatabase.LoadAssetAtPath<AssemblyDefinitionAsset>(
-                        assemblyDefinitionFilePath
-                    );
-
-                var assemblyDefinitionJSON = assemblyDefinition.text;
-
-                var model = JsonUtility.FromJson<AssemblyDefinitionModel>(assemblyDefinitionJSON);
-                var wrapper = new AssemblyDefinitionModelWrapper(
-                    assemblyDefinitionFilePath,
-                    assemblyDefinitionFileId,
-                    model
-                );
+                var wrapper = AssemblyDefinitionMetadata.CreateNew(assemblyDefinitionFilePath);
 
                 if (wrapper.IsAsset)
                 {
@@ -102,20 +37,16 @@ namespace Appalachia.CI.Packaging.AssemblyDefinitions
                 assemblyLookup.Add(assemblyDefinitionFileId, wrapper);
             }
 
-            var directoryInfo = new DirectoryInfo(Application.dataPath);
+            var directoryInfo = new DirectoryInfo(ProjectLocations.GetAssetsDirectoryPath());
 
             var children = directoryInfo.GetDirectories();
 
             RecursiveGitRepositorySearch(children, repositories);
-
-            foreach (var gitRepository in repositories)
-            {
-            }
         }
 
         private static void RecursiveGitRepositorySearch(
             DirectoryInfo[] children,
-            List<GitRepository> repositories)
+            List<RepositoryDirectoryMetadata> repositories)
         {
             foreach (var child in children)
             {
@@ -125,23 +56,10 @@ namespace Appalachia.CI.Packaging.AssemblyDefinitions
                 {
                     if (subchild.Name == ".git")
                     {
-                        var repo = new GitRepository
-                        {
-                            repositoryRoot = child, repositoryGitFolder = subchild
-                        };
-
-                        var childFiles = child.GetFiles();
-
-                        foreach (var childFile in childFiles)
-                        {
-                            if (childFile.Name == "package.json")
-                            {
-                                repo.packageJson =
-                                    PublicationManifest.LoadManifest(childFile.Directory.FullName);
-                            }
-                        }
-
+                        var repo = RepositoryDirectoryMetadata.FromRoot(child);
+                        
                         repositories.Add(repo);
+                        break;
                     }
                 }
 

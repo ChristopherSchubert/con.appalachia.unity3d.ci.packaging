@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Appalachia.CI.Integration;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
     public class RegistryManager
     {
         private readonly string manifest = Path.Combine(
-            Application.dataPath,
+            ProjectLocations.GetAssetsDirectoryPath(),
             "..",
             "Packages",
             "manifest.json"

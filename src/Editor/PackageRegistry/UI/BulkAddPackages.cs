@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
     public class BulkAddPackages : EditorWindow
     {
@@ -62,7 +62,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
 
             using (var reader = new StringReader(PackageList))
             {
-                var line = string.Empty;
+                string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     if (!string.IsNullOrEmpty(line))

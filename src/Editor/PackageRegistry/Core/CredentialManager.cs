@@ -4,16 +4,8 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
-    [Serializable]
-    public class NPMCredential
-    {
-        public string url;
-        public string token;
-        public bool alwaysAuth;
-    }
-
     public class CredentialManager
     {
         private readonly List<NPMCredential> credentials = new();
