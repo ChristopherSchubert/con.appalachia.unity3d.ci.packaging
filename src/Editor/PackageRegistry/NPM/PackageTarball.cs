@@ -1,4 +1,6 @@
 using System.IO;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 
@@ -16,11 +18,11 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 
             var packageName = manifest["name"] + "-" + manifest["version"] + ".tgz";
 
-            Directory.CreateDirectory(outputFolder);
+            AppaDirectory.CreateDirectory(outputFolder);
 
-            var outputFile = Path.Combine(outputFolder, packageName);
+            var outputFile = AppaPath.Combine(outputFolder, packageName);
 
-            Stream outStream = File.Create(outputFile);
+            Stream outStream = AppaFile.Create(outputFile);
             Stream gzoStream = new GZipOutputStream(outStream);
             var tarArchive = TarArchive.CreateOutputTarArchive(gzoStream);
 
@@ -35,9 +37,9 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
         private static string AppendDirectorySeparatorChar(string path)
         {
             // Append a slash only if the path is a directory and does not have a slash.
-            if (Directory.Exists(path) && !path.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            if (AppaDirectory.Exists(path) && !path.EndsWith(AppaPath.DirectorySeparatorChar.ToString()))
             {
-                return path + Path.DirectorySeparatorChar;
+                return path + AppaPath.DirectorySeparatorChar;
             }
 
             return path;
@@ -56,20 +58,20 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
             tarArchive.WriteEntry(tarEntry, false);
 
             // Write each file to the tar.
-            var filenames = Directory.GetFiles(sourceDirectory);
+            var filenames = AppaDirectory.GetFiles(sourceDirectory);
             foreach (var filename in filenames)
             {
                 var fileEntry = TarEntry.CreateEntryFromFile(filename);
-                fileEntry.Name = directoryName + Path.GetFileName(filename);
+                fileEntry.Name = directoryName + AppaPath.GetFileName(filename);
                 tarArchive.WriteEntry(fileEntry, true);
             }
 
             if (recurse)
             {
-                var directories = Directory.GetDirectories(sourceDirectory);
+                var directories = AppaDirectory.GetDirectories(sourceDirectory);
                 foreach (var directory in directories)
                 {
-                    var newDirectory = directoryName + new DirectoryInfo(directory).Name + "/";
+                    var newDirectory = directoryName + new AppaDirectoryInfo(directory).Name + "/";
                     AddDirectoryFilesToTar(tarArchive, directory, recurse, newDirectory);
                 }
             }

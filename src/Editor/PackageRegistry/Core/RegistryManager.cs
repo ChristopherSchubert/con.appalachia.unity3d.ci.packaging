@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.Assets;
+using Appalachia.CI.Integration.FileSystem;
 using Newtonsoft.Json.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
     public class RegistryManager
     {
-        private readonly string manifest = Path.Combine(
+        private readonly string manifest = AppaPath.Combine(
             ProjectLocations.GetAssetsDirectoryPath(),
             "..",
             "Packages",
@@ -22,7 +22,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
             credentialManager = new CredentialManager();
             registries = new List<ScopedRegistry>();
 
-            var manifestJSON = JObject.Parse(File.ReadAllText(manifest));
+            var manifestJSON = JObject.Parse(AppaFile.ReadAllText(manifest));
 
             var Jregistries = (JArray) manifestJSON["scopedRegistries"];
             if (Jregistries != null)
@@ -117,7 +117,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 
         public void Remove(ScopedRegistry registry)
         {
-            var manifestJSON = JObject.Parse(File.ReadAllText(manifest));
+            var manifestJSON = JObject.Parse(AppaFile.ReadAllText(manifest));
             var Jregistries = (JArray) manifestJSON["scopedRegistries"];
 
             foreach (var JRegistryElement in Jregistries)
@@ -141,7 +141,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 
         public void Save(ScopedRegistry registry)
         {
-            var manifestJSON = JObject.Parse(File.ReadAllText(manifest));
+            var manifestJSON = JObject.Parse(AppaFile.ReadAllText(manifest));
 
             var manifestRegistry = GetOrCreateScopedRegistry(registry, manifestJSON);
 
@@ -161,8 +161,8 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 
         private void write(JObject manifestJSON)
         {
-            File.WriteAllText(manifest, manifestJSON.ToString());
-            AssetDatabase.Refresh();
+            AppaFile.WriteAllText(manifest, manifestJSON.ToString());
+            AssetDatabaseManager.Refresh();
         }
     }
 }

@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
 using Newtonsoft.Json;
 
 namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
@@ -10,16 +11,16 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
     {
         private readonly List<NPMCredential> credentials = new();
 
-        private readonly string upmconfigFile = Path.Combine(
+        private readonly string upmconfigFile = AppaPath.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".upmconfig.toml"
         );
 
         public CredentialManager()
         {
-            if (File.Exists(upmconfigFile))
+            if (AppaFile.Exists(upmconfigFile))
             {
-                var text = File.ReadAllText(upmconfigFile);
+                var text = AppaFile.ReadAllText(upmconfigFile);
                 var config = JsonConvert.DeserializeObject<NPMCredential[]>(text);
 
                 credentials.Clear();
@@ -57,7 +58,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 
             var json = JsonConvert.SerializeObject(credentials.ToArray());
 
-            File.WriteAllText(upmconfigFile, json);
+            AppaFile.WriteAllText(upmconfigFile, json);
         }
 
         public bool HasRegistry(string url)

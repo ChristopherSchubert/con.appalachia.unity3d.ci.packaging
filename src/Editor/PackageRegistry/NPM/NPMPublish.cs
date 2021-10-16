@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
 using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEngine;
 
@@ -14,7 +16,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
             var manager = new CredentialManager();
             if (!manager.HasRegistry(registry))
             {
-                throw new IOException("Credentials not set for registry " + registry);
+                throw new AppaIOException("Credentials not set for registry " + registry);
             }
 
             var token = manager.GetCredential(registry).token;
@@ -56,12 +58,12 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
                         var response = JsonUtility.FromJson<NPMResponse>(responseString);
                         if (string.IsNullOrEmpty(response.ok))
                         {
-                            throw new IOException(responseString);
+                            throw new AppaIOException(responseString);
                         }
                     }
                     catch (Exception)
                     {
-                        throw new IOException(responseString);
+                        throw new AppaIOException(responseString);
                     }
                 }
                 catch (WebException e)
@@ -82,27 +84,27 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 
                             if (string.IsNullOrEmpty(response.error))
                             {
-                                throw new IOException(responseString);
+                                throw new AppaIOException(responseString);
                             }
 
                             var reason = string.IsNullOrEmpty(response.reason)
                                 ? ""
                                 : Environment.NewLine + response.reason;
 
-                            throw new IOException(response.error + reason);
+                            throw new AppaIOException(response.error + reason);
                         }
                         catch (Exception)
                         {
-                            throw new IOException(responseString);
+                            throw new AppaIOException(responseString);
                         }
                     }
 
                     if (e.InnerException != null)
                     {
-                        throw new IOException(e.InnerException.Message);
+                        throw new AppaIOException(e.InnerException.Message);
                     }
 
-                    throw new IOException(e.Message);
+                    throw new AppaIOException(e.Message);
                 }
             }
         }

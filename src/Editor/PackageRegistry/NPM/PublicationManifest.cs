@@ -1,7 +1,8 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
@@ -91,30 +92,30 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 
         internal static JObject LoadManifest(string packageFolder)
         {
-            var manifestPath = Path.Combine(packageFolder, "package.json");
+            var manifestPath = AppaPath.Combine(packageFolder, "package.json");
 
-            if (!File.Exists(manifestPath))
+            if (!AppaFile.Exists(manifestPath))
             {
-                throw new IOException(
+                throw new AppaIOException(
                     "Invalid package folder. Cannot find package.json in " + packageFolder
                 );
             }
 
-            var manifest = JObject.Parse(File.ReadAllText(manifestPath));
+            var manifest = JObject.Parse(AppaFile.ReadAllText(manifestPath));
 
             if (manifest["name"] == null)
             {
-                throw new IOException("Package name not set");
+                throw new AppaIOException("Package name not set");
             }
 
             if (manifest["version"] == null)
             {
-                throw new IOException("Package version not set");
+                throw new AppaIOException("Package version not set");
             }
 
             if (manifest["description"] == null)
             {
-                throw new IOException("Package description not set");
+                throw new AppaIOException("Package description not set");
             }
 
             return manifest;
@@ -122,9 +123,9 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 
         private string GetReadmeFilename(string packageFolder)
         {
-            foreach (var path in Directory.EnumerateFiles(packageFolder))
+            foreach (var path in AppaDirectory.EnumerateFiles(packageFolder))
             {
-                var file = Path.GetFileName(path);
+                var file = AppaPath.GetFileName(path);
                 if (file.Equals("readme.md",  StringComparison.InvariantCultureIgnoreCase) ||
                     file.Equals("readme.txt", StringComparison.InvariantCultureIgnoreCase) ||
                     file.Equals("readme",     StringComparison.InvariantCultureIgnoreCase))
@@ -138,7 +139,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 
         private string GetReadme(string readmeFile)
         {
-            return File.ReadAllText(readmeFile);
+            return AppaFile.ReadAllText(readmeFile);
         }
 
         private string SHA512(byte[] data)
@@ -160,15 +161,15 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
             var folder = FileUtil.GetUniqueTempPathInProject();
             var file = PackageTarball.Create(packageFolder, folder);
 
-            var bytes = File.ReadAllBytes(file);
+            var bytes =AppaFile.ReadAllBytes(file);
             base64Data = Convert.ToBase64String(bytes);
             size = bytes.Length;
 
             sha1 = SHA1(bytes);
             sha512 = SHA512(bytes);
 
-            File.Delete(file);
-            Directory.Delete(folder);
+            AppaFile.Delete(file);
+            AppaDirectory.Delete(folder);
         }
     }
 }

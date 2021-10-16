@@ -83,7 +83,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
                 return info.packageId;
             }
 
-            var latest = "";
+            string latest;
 
 #if UNITY_2019_1_OR_NEWER
             if (string.IsNullOrEmpty(info.versions.verified))
@@ -118,19 +118,19 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
                 return false;
             }
 
-            var request = Client.Add(latestVersion);
+            var rqst = Client.Add(latestVersion);
 
-            while (!request.IsCompleted)
+            while (!rqst.IsCompleted)
             {
                 Thread.Sleep(100);
             }
 
-            if (request.Status == StatusCode.Success)
+            if (rqst.Status == StatusCode.Success)
             {
                 return true;
             }
 
-            error = request.Error.message;
+            error = rqst.Error.message;
             return false;
         }
     }

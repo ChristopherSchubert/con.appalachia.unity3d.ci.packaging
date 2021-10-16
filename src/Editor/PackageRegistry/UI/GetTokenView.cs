@@ -68,6 +68,7 @@ namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
         {
             EditorGUILayout.LabelField("Generate token", EditorStyles.whiteLargeLabel);
             EditorGUILayout.BeginHorizontal();
+            // ReSharper disable once CoVariantArrayConversion
             selectedIndex = EditorGUILayout.Popup(new GUIContent("Method"), selectedIndex, methods);
 
             if (GUILayout.Button("Login & get auth token"))
