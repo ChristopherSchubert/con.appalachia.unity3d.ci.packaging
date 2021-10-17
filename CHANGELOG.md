@@ -12,6 +12,13 @@
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 1a4f9200d242345d223976a437f302e9072fc27b | 2021-10-16 | Chris Schubert | More project cleanup and refactoring |
+| 0fdb140ce47ab02e134da94789fe38d06e61536a | 2021-10-12 | Chris Schubert | Code cleanup and disabling assembly manager |
+
+
+ ## Tag: `v0.1.2`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
 | 95807ae6e742a624e62420ac3b5bee99503003f8 | 2021-10-04 | Chris Schubert | Code cleanup and refactoring |
 
 
