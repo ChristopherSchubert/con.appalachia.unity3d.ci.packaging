@@ -12,6 +12,12 @@
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 897498a62453b137f5c174963d623a9995098881 | 2021-10-17 | Chris Schubert | Fixing package jsons |
+
+
+ ## Tag: `v0.1.3`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
 | 1a4f9200d242345d223976a437f302e9072fc27b | 2021-10-16 | Chris Schubert | More project cleanup and refactoring |
 | 0fdb140ce47ab02e134da94789fe38d06e61536a | 2021-10-12 | Chris Schubert | Code cleanup and disabling assembly manager |
 
