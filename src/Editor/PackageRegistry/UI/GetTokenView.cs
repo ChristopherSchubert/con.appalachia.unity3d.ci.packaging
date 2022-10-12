@@ -1,62 +1,42 @@
-using Appalachia.CI.Packaging.PackageRegistry.Core;
-using Appalachia.CI.Packaging.PackageRegistry.NPM;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.NPM;
 using UnityEditor;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
-    internal class TokenMethod : GUIContent
-    {
-        internal delegate bool GetToken(ScopedRegistry registry, string username, string password);
-        internal string usernameName;
-        internal string passwordName;
-        internal GetToken action;
-
-        public TokenMethod(string name, string usernameName, string passwordName, GetToken action) : base(name)
-        {
-            this.usernameName = usernameName;
-            this.passwordName = passwordName;
-            this.action = action;
-        }
-    }
-
     internal class GetTokenView : EditorWindow
     {
-        private static TokenMethod[] methods = {
-                new TokenMethod("npm login", "Registry username", "Registry password", GetNPMLoginToken),
-                new TokenMethod("bintray", "Bintray username", "Bintray API key", GetBintrayToken),
-                // TODO adjust TokenMethod to allow for opening GitHub token URL: https://github.com/settings/tokens/new
-            };
+        private static readonly TokenMethod[] methods =
+        {
+            new("npm login", "Registry username", "Registry password", GetNPMLoginToken),
+            new("bintray", "Bintray username", "Bintray API key", GetBintrayToken)
 
+            // TODO adjust TokenMethod to allow for opening GitHub token URL: https://github.com/settings/tokens/new
+        };
 
-        private string username;
+        private static string error;
+
+        private bool initialized;
         private string password;
-
-        private bool initialized = false;
-
-        private TokenMethod tokenMethod;
 
         private ScopedRegistry registry;
 
+        private TokenMethod tokenMethod;
 
-        void OnEnable()
+        private string username;
+
+        private void OnEnable()
         {
             error = null;
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             initialized = false;
         }
 
-        private void SetRegistry(TokenMethod tokenMethod, ScopedRegistry registry)
-        {
-            this.tokenMethod = tokenMethod;
-            this.registry = registry;
-            this.initialized = true;
-        }
-
-        void OnGUI()
+        private void OnGUI()
         {
             if (initialized)
             {
@@ -66,7 +46,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
 
                 if (GUILayout.Button("Login"))
                 {
-                    if(tokenMethod.action(registry, username, password))
+                    if (tokenMethod.action(registry, username, password))
                     {
                         CloseWindow();
                     }
@@ -84,17 +64,42 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
             }
         }
 
+        internal static int CreateGUI(int selectedIndex, ScopedRegistry registry)
+        {
+            EditorGUILayout.LabelField("Generate token", EditorStyles.whiteLargeLabel);
+            EditorGUILayout.BeginHorizontal();
+            // ReSharper disable once CoVariantArrayConversion
+            selectedIndex = EditorGUILayout.Popup(new GUIContent("Method"), selectedIndex, methods);
+
+            if (GUILayout.Button("Login & get auth token"))
+            {
+                CreateWindow(methods[selectedIndex], registry);
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            return selectedIndex;
+        }
+
+        private void SetRegistry(TokenMethod tokenMethod, ScopedRegistry registry)
+        {
+            this.tokenMethod = tokenMethod;
+            this.registry = registry;
+            initialized = true;
+        }
+
         private static void CreateWindow(TokenMethod method, ScopedRegistry registry)
         {
-            GetTokenView getTokenView = EditorWindow.GetWindow<GetTokenView>(true, "Get token", true);
+            var getTokenView = GetWindow<GetTokenView>(true, "Get token", true);
             getTokenView.SetRegistry(method, registry);
         }
 
-        private static string error = null;
-
-        private static bool GetNPMLoginToken(ScopedRegistry registry, string username, string password)
+        private static bool GetNPMLoginToken(
+            ScopedRegistry registry,
+            string username,
+            string password)
         {
-            NPMResponse response = NPMLogin.GetLoginToken(registry.url, username, password);
+            var response = NPMLogin.GetLoginToken(registry.url, username, password);
 
             if (string.IsNullOrEmpty(response.ok))
             {
@@ -102,19 +107,19 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                 error = "Cannot get token: " + response.error;
                 return false;
             }
-            else
-            {
-                registry.token = response.token;
-                return true;
-            }
+
+            registry.token = response.token;
+            return true;
         }
 
-        private static bool GetBintrayToken(ScopedRegistry registry, string username, string password)
+        private static bool GetBintrayToken(
+            ScopedRegistry registry,
+            string username,
+            string password)
         {
             registry.token = NPMLogin.GetBintrayToken(username, password);
             return !string.IsNullOrEmpty(registry.token);
         }
-
 
         private void CloseWindow()
         {
@@ -123,25 +128,9 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
             {
                 view.Repaint();
             }
+
             Close();
             GUIUtility.ExitGUI();
-        }
-
-
-        internal static int CreateGUI(int selectedIndex, ScopedRegistry registry)
-        {
-            EditorGUILayout.LabelField("Generate token", EditorStyles.whiteLargeLabel);
-            EditorGUILayout.BeginHorizontal();
-            selectedIndex = EditorGUILayout.Popup(new GUIContent("Method"), selectedIndex, methods);
-
-            if(GUILayout.Button("Login & get auth token"))
-            {
-                CreateWindow(methods[selectedIndex], registry);
-            }
-
-            EditorGUILayout.EndHorizontal();
-
-            return selectedIndex;
         }
     }
 }

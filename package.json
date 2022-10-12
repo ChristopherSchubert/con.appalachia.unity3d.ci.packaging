@@ -1,7 +1,7 @@
 {
   "name": "com.appalachia.unity3d.ci.packaging",
-  "displayName": "Packaging for Unity3D",
-  "version": "0.1.0",
+  "displayName": "Appalachia.CI.Packaging for Unity3D",
+  "version": "0.1.4",
   "unity": "2020.3",
   "description": "Models and UI for packaging in Unity3D.",
   "keywords": [
@@ -11,7 +11,7 @@
   "category": "Tool",
   "license": "SEE LICENSE IN LICENSE.MD",
   "author": {
-    "name": "Appalachia Interactive & Halodi"
+    "name": "Appalachia Interactive"
   },
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "2.0.0",
@@ -25,15 +25,15 @@
     "registry": "http://35.211.123.13:4873/"
   },
   "scripts": {
-    "preversion" : "bash ~/com.appalachia/appa/appa package unity3d preversion",
-    "version" : "bash ~/com.appalachia/appa/appa package unity3d version",
-    "postversion" : "bash ~/com.appalachia/appa/appa package unity3d postversion",
-    "prepack" : "bash ~/com.appalachia/appa/appa package unity3d prepack",
-    "package" : "bash ~/com.appalachia/appa/appa package unity3d package",
-    "postpack" : "bash ~/com.appalachia/appa/appa package unity3d postpack",
-    "vscode:prepublish" : "bash ~/com.appalachia/appa/appa package unity3d vscode_prepublish",
-    "prepublishOnly" : "bash ~/com.appalachia/appa/appa package unity3d prepublishOnly",
-    "publish" : "bash ~/com.appalachia/appa/appa package unity3d publish",
-    "postpublish" : "bash ~/com.appalachia/appa/appa package unity3d postpublish"
+    "preversion": "bash ~/com.appalachia/appa/appa package unity3d preversion",
+    "version": "bash ~/com.appalachia/appa/appa package unity3d version",
+    "postversion": "bash ~/com.appalachia/appa/appa package unity3d postversion",
+    "prepack": "bash ~/com.appalachia/appa/appa package unity3d prepack",
+    "package": "bash ~/com.appalachia/appa/appa package unity3d package",
+    "postpack": "bash ~/com.appalachia/appa/appa package unity3d postpack",
+    "vscode:prepublish": "bash ~/com.appalachia/appa/appa package unity3d vscode_prepublish",
+    "prepublishOnly": "bash ~/com.appalachia/appa/appa package unity3d prepublishOnly",
+    "publish": "bash ~/com.appalachia/appa/appa package unity3d publish",
+    "postpublish": "bash ~/com.appalachia/appa/appa package unity3d postpublish"
   }
 }

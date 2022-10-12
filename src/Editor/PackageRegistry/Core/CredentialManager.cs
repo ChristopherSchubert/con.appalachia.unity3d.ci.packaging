@@ -1,56 +1,48 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
 using Newtonsoft.Json;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
-    [Serializable]
-    public class NPMCredential
-    {
-        public string url;
-        public string token;
-        public bool alwaysAuth;
-    }
-
     public class CredentialManager
     {
-        private string upmconfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".upmconfig.toml");
-        private List<NPMCredential> credentials = new List<NPMCredential>();
-        
-        public List<NPMCredential> CredentialSet
+        private readonly List<NPMCredential> credentials = new();
+
+        private readonly string upmconfigFile = AppaPath.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            ".upmconfig.toml"
+        );
+
+        public CredentialManager()
         {
-            get
+            if (AppaFile.Exists(upmconfigFile))
             {
-                return credentials;
+                var text = AppaFile.ReadAllText(upmconfigFile);
+                var config = JsonConvert.DeserializeObject<NPMCredential[]>(text);
+
+                credentials.Clear();
+                credentials.AddRange(config);
             }
         }
 
-        public String[] Registries
+        public List<NPMCredential> CredentialSet => credentials;
+
+        public string[] Registries
         {
             get
             {
-                String[] urls = new String[credentials.Count];
-                int index = 0;
-                foreach (NPMCredential cred in CredentialSet)
+                var urls = new string[credentials.Count];
+                var index = 0;
+                foreach (var cred in CredentialSet)
                 {
                     urls[index] = cred.url;
                     ++index;
                 }
-                return urls;
-            }
-        }
 
-        public CredentialManager()
-        {
-            if (File.Exists(upmconfigFile))
-            {
-                var text = File.ReadAllText(upmconfigFile);
-                var config = JsonConvert.DeserializeObject<NPMCredential[]>(text);
-                
-                credentials.Clear();
-                credentials.AddRange(config);
+                return urls;
             }
         }
 
@@ -66,7 +58,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
             var json = JsonConvert.SerializeObject(credentials.ToArray());
 
-            File.WriteAllText(upmconfigFile, json);
+            AppaFile.WriteAllText(upmconfigFile, json);
         }
 
         public bool HasRegistry(string url)
@@ -76,7 +68,9 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
         public NPMCredential GetCredential(string url)
         {
-            return credentials.FirstOrDefault(x => x.url?.Equals(url, StringComparison.Ordinal) ?? false);
+            return credentials.FirstOrDefault(
+                x => x.url?.Equals(url, StringComparison.Ordinal) ?? false
+            );
         }
 
         public void SetCredential(string url, bool alwaysAuth, string token)
@@ -90,7 +84,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
             }
             else
             {
-                NPMCredential newCred = new NPMCredential();
+                var newCred = new NPMCredential();
                 newCred.url = url;
                 newCred.alwaysAuth = alwaysAuth;
                 newCred.token = token;
@@ -107,5 +101,4 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
             }
         }
     }
-
 }

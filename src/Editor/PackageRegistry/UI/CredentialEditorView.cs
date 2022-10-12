@@ -1,55 +1,33 @@
 using System;
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
-    class CredentialEditorView : EditorWindow
+    internal class CredentialEditorView : EditorWindow
     {
-        private bool initialized = false;
+        private bool createNew;
 
         private CredentialManager credentialManager;
-
-        private bool createNew;
+        private bool initialized;
 
         private ScopedRegistry registry;
 
         private int tokenMethod;
 
-
-        void OnEnable()
+        private void OnEnable()
         {
             tokenMethod = 0;
             minSize = new Vector2(480, 320);
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             initialized = false;
         }
 
-        public void CreateNew(CredentialManager credentialManager)
-        {
-            this.credentialManager = credentialManager;
-            this.createNew = true;
-            this.registry = new ScopedRegistry();
-            this.initialized = true;
-        }
-
-        public void Edit(NPMCredential credential, CredentialManager credentialManager)
-        {
-            this.credentialManager = credentialManager;
-            this.registry = new ScopedRegistry();
-            this.registry.url = credential.url;
-            this.registry.auth = credential.alwaysAuth;
-            this.registry.token = credential.token;
-
-            this.createNew = false;
-            this.initialized = true;
-        }
-
-        void OnGUI()
+        private void OnGUI()
         {
             if (initialized)
             {
@@ -64,10 +42,13 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                     EditorGUILayout.LabelField("Edit credential", EditorStyles.whiteLargeLabel);
                     EditorGUILayout.LabelField("Registry URL: " + registry.url);
                 }
-                
-                if(string.IsNullOrEmpty(registry.url))
+
+                if (string.IsNullOrEmpty(registry.url))
                 {
-                    EditorGUILayout.HelpBox("Enter the registry URL you want to add authentication for.", MessageType.Warning);
+                    EditorGUILayout.HelpBox(
+                        "Enter the registry URL you want to add authentication for.",
+                        MessageType.Warning
+                    );
                 }
 
                 registry.auth = EditorGUILayout.Toggle("Always auth", registry.auth);
@@ -77,19 +58,25 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
 
                 EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(registry.url));
                 tokenMethod = GetTokenView.CreateGUI(tokenMethod, registry);
-                
+
                 if (!string.IsNullOrEmpty(registry.url) && string.IsNullOrEmpty(registry.token))
                 {
-                    EditorGUILayout.HelpBox("Select an authentication method and click on \"Get token\"", MessageType.Warning);
+                    EditorGUILayout.HelpBox(
+                        "Select an authentication method and click on \"Get token\"",
+                        MessageType.Warning
+                    );
                 }
-                
+
                 EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(registry.token));
-                
+
                 EditorGUILayout.Space();
                 EditorGUILayout.BeginVertical(GUILayout.ExpandHeight(true));
                 EditorGUILayout.EndVertical();
 
-                EditorGUILayout.HelpBox("Restart Unity to reload credentials after saving.", MessageType.Info);
+                EditorGUILayout.HelpBox(
+                    "Restart Unity to reload credentials after saving.",
+                    MessageType.Info
+                );
                 EditorGUILayout.BeginHorizontal();
                 if (createNew)
                 {
@@ -105,7 +92,7 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                         Save();
                     }
                 }
-                
+
                 EditorGUI.EndDisabledGroup();
                 EditorGUI.EndDisabledGroup();
 
@@ -114,8 +101,29 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                     Close();
                     GUIUtility.ExitGUI();
                 }
+
                 EditorGUILayout.EndHorizontal();
             }
+        }
+
+        public void CreateNew(CredentialManager credentialManager)
+        {
+            this.credentialManager = credentialManager;
+            createNew = true;
+            registry = new ScopedRegistry();
+            initialized = true;
+        }
+
+        public void Edit(NPMCredential credential, CredentialManager credentialManager)
+        {
+            this.credentialManager = credentialManager;
+            registry = new ScopedRegistry();
+            registry.url = credential.url;
+            registry.auth = credential.alwaysAuth;
+            registry.token = credential.token;
+
+            createNew = false;
+            initialized = true;
         }
 
         private void Save()
@@ -124,14 +132,19 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
             {
                 credentialManager.SetCredential(registry.url, registry.auth, registry.token);
                 credentialManager.Write();
-                
+
                 // TODO figure out in which cases/Editor versions a restart is actually required,
                 // and where a Client.Resolve() call or PackMan reload is sufficient
-                if (EditorUtility.DisplayDialog("Unity Editor restart might be required", "The Unity editor might need to be restarted for this change to take effect.", "Restart Now", "Cancel"))
+                if (EditorUtility.DisplayDialog(
+                    "Unity Editor restart might be required",
+                    "The Unity editor might need to be restarted for this change to take effect.",
+                    "Restart Now",
+                    "Cancel"
+                ))
                 {
                     EditorApplication.OpenProject(Environment.CurrentDirectory);
                 }
-                
+
                 Close();
                 GUIUtility.ExitGUI();
             }
@@ -140,8 +153,5 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                 EditorUtility.DisplayDialog("Invalid", "Invalid settings for credential.", "Ok");
             }
         }
-
-
-
     }
 }

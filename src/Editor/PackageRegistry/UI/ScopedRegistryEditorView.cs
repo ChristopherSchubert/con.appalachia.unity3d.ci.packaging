@@ -1,59 +1,46 @@
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.UI
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.UI
 {
-    class ScopedRegistryEditorView : EditorWindow
+    internal class ScopedRegistryEditorView : EditorWindow
     {
-        private bool initialized = false;
-
         private RegistryManager controller;
 
         private bool createNew;
+        private bool initialized;
 
         private ScopedRegistry registry;
 
+        private ReorderableList scopeList;
+
         private int tokenMethod;
-        void OnEnable()
+
+        private void OnEnable()
         {
             tokenMethod = 0;
 
             minSize = new Vector2(480, 320);
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             initialized = false;
         }
 
-        public void CreateNew(RegistryManager controller)
-        {
-            this.controller = controller;
-            this.createNew = true;
-            this.registry = new ScopedRegistry();
-            this.initialized = true;
-        }
-
-        public void Edit(ScopedRegistry registry, RegistryManager controller)
-        {
-            this.controller = controller;
-            this.registry = registry;
-            this.createNew = false;
-            this.initialized = true;
-        }
-
-
-        private ReorderableList scopeList = null;
-        void OnGUI()
+        private void OnGUI()
         {
             if (initialized)
             {
                 EditorGUILayout.Space();
                 if (createNew)
                 {
-                    EditorGUILayout.LabelField("Add scoped registry ", EditorStyles.whiteLargeLabel);
+                    EditorGUILayout.LabelField(
+                        "Add scoped registry ",
+                        EditorStyles.whiteLargeLabel
+                    );
                     registry.name = EditorGUILayout.TextField("Name", registry.name);
 
                     EditorGUI.BeginChangeCheck();
@@ -65,24 +52,35 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                 }
                 else
                 {
-                    EditorGUILayout.LabelField("Edit scoped registry", EditorStyles.whiteLargeLabel);
+                    EditorGUILayout.LabelField(
+                        "Edit scoped registry",
+                        EditorStyles.whiteLargeLabel
+                    );
                     EditorGUILayout.LabelField("Name", registry.name);
-                    EditorGUILayout.LabelField("URL", registry.url);
+                    EditorGUILayout.LabelField("URL",  registry.url);
                 }
 
                 if (scopeList == null)
                 {
-                    scopeList = new ReorderableList(registry.scopes, typeof(string), true, false, true, true)
-                    {
-                        drawElementCallback = (rect, index, active, focused) =>
+                    scopeList =
+                        new ReorderableList(
+                            registry.scopes,
+                            typeof(string),
+                            true,
+                            false,
+                            true,
+                            true
+                        )
                         {
-                            registry.scopes[index] = EditorGUI.TextField(rect, registry.scopes[index]);
-                        },
-                        onAddCallback = list =>
-                        {
-                            registry.scopes.Add("");
-                        }
-                    };
+                            drawElementCallback = (rect, index, active, focused) =>
+                            {
+                                registry.scopes[index] = EditorGUI.TextField(
+                                    rect,
+                                    registry.scopes[index]
+                                );
+                            },
+                            onAddCallback = list => { registry.scopes.Add(""); }
+                        };
                 }
 
                 EditorGUILayout.BeginHorizontal();
@@ -93,20 +91,26 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.Space();
-                EditorGUILayout.LabelField("Authentication / Credentials", EditorStyles.whiteLargeLabel);
-                
+                EditorGUILayout.LabelField(
+                    "Authentication / Credentials",
+                    EditorStyles.whiteLargeLabel
+                );
+
                 registry.auth = EditorGUILayout.Toggle("Always auth", registry.auth);
                 registry.token = EditorGUILayout.TextField("Token", registry.token);
 
                 EditorGUILayout.Space();
 
                 tokenMethod = GetTokenView.CreateGUI(tokenMethod, registry);
-                
+
                 EditorGUILayout.Space();
                 EditorGUILayout.BeginVertical(GUILayout.ExpandHeight(true));
                 EditorGUILayout.EndVertical();
-                
-                EditorGUILayout.HelpBox("Restart Unity to reload credentials after saving.", MessageType.Info);
+
+                EditorGUILayout.HelpBox(
+                    "Restart Unity to reload credentials after saving.",
+                    MessageType.Info
+                );
                 EditorGUILayout.BeginHorizontal();
                 if (createNew)
                 {
@@ -122,14 +126,31 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
                         Save();
                     }
                 }
-                
+
                 if (GUILayout.Button("Cancel"))
                 {
                     Close();
                     GUIUtility.ExitGUI();
                 }
+
                 EditorGUILayout.EndHorizontal();
             }
+        }
+
+        public void CreateNew(RegistryManager controller)
+        {
+            this.controller = controller;
+            createNew = true;
+            registry = new ScopedRegistry();
+            initialized = true;
+        }
+
+        public void Edit(ScopedRegistry registry, RegistryManager controller)
+        {
+            this.controller = controller;
+            this.registry = registry;
+            createNew = false;
+            initialized = true;
         }
 
         private void Save()
@@ -158,20 +179,16 @@ namespace Appalachia.CI.Packaging.PackageRegistry.UI
             {
                 EditorUtility.DisplayDialog("Invalid", "Invalid settings for registry.", "Ok");
             }
-
         }
 
         private void UpdateCredential()
         {
             if (controller.credentialManager.HasRegistry(registry.url))
             {
-                NPMCredential cred = controller.credentialManager.GetCredential(registry.url);
+                var cred = controller.credentialManager.GetCredential(registry.url);
                 registry.auth = cred.alwaysAuth;
                 registry.token = cred.token;
             }
         }
-
-
-
     }
 }

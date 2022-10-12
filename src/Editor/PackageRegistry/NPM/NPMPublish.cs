@@ -2,41 +2,39 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
-using Appalachia.CI.Packaging.PackageRegistry.Core;
+using Appalachia.CI.Integration;
+using Appalachia.CI.Integration.FileSystem;
+using Appalachia.CI.Packaging.Editor.PackageRegistry.Core;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
-public class NPMPublish
-{
+    public class NPMPublish
+    {
         public static void Publish(string packageFolder, string registry)
         {
-            CredentialManager manager = new CredentialManager();
+            var manager = new CredentialManager();
             if (!manager.HasRegistry(registry))
             {
-                throw new System.IO.IOException("Credentials not set for registry " + registry);
+                throw new AppaIOException("Credentials not set for registry " + registry);
             }
 
-            string token = manager.GetCredential(registry).token;
+            var token = manager.GetCredential(registry).token;
 
-            PublicationManifest manifest = new PublicationManifest(packageFolder, registry); ;
-
-
-
+            var manifest = new PublicationManifest(packageFolder, registry);
+            ;
 
             using (var client = new ExpectContinueAware())
             {
-                string upload = NPMLogin.UrlCombine(registry, manifest.name);
-
+                var upload = NPMLogin.UrlCombine(registry, manifest.name);
 
                 client.Encoding = Encoding.UTF8;
-                client.Headers.Add(HttpRequestHeader.Accept, "application/json");
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers.Add(HttpRequestHeader.Accept,        "application/json");
+                client.Headers.Add(HttpRequestHeader.ContentType,   "application/json");
                 client.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 
-
                 // Headers set by the NPM client, but not by us. Option to try with compatibility issues.
-                
+
                 // client.Headers.Add("npm-in-ci", "false");
                 // client.Headers.Add("npm-scope", "");
                 // client.Headers.Add(HttpRequestHeader.UserAgent, "npm/6.14.4 node/v12.16.2 linux x64");
@@ -47,77 +45,68 @@ public class NPMPublish
                 // client.Headers.Add("npm-session", a + b);
                 // client.Headers.Add("referer", "publish");
 
-
                 try
                 {
-                    string responseString = client.UploadString(upload, WebRequestMethods.Http.Put, manifest.Request);
+                    var responseString = client.UploadString(
+                        upload,
+                        WebRequestMethods.Http.Put,
+                        manifest.Request
+                    );
 
                     try
                     {
-                        NPMResponse response = JsonUtility.FromJson<NPMResponse>(responseString);
+                        var response = JsonUtility.FromJson<NPMResponse>(responseString);
                         if (string.IsNullOrEmpty(response.ok))
                         {
-                            throw new System.IO.IOException(responseString);
+                            throw new AppaIOException(responseString);
                         }
                     }
                     catch (Exception)
                     {
-                        throw new System.IO.IOException(responseString);
+                        throw new AppaIOException(responseString);
                     }
-
-
                 }
                 catch (WebException e)
                 {
                     if (e.Response != null)
                     {
-                        Stream receiveStream = e.Response.GetResponseStream();
+                        var receiveStream = e.Response.GetResponseStream();
+
                         // Pipes the stream to a higher level stream reader with the required encoding format.
-                        StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                        string responseString = readStream.ReadToEnd();
+                        var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                        var responseString = readStream.ReadToEnd();
                         e.Response.Close();
                         readStream.Close();
 
-
                         try
                         {
-                            NPMResponse response = JsonUtility.FromJson<NPMResponse>(responseString);
+                            var response = JsonUtility.FromJson<NPMResponse>(responseString);
 
                             if (string.IsNullOrEmpty(response.error))
                             {
-                                throw new System.IO.IOException(responseString);
+                                throw new AppaIOException(responseString);
                             }
-                            else
-                            {
-                                string reason = string.IsNullOrEmpty(response.reason) ? "" : Environment.NewLine + response.reason;
 
-                                throw new System.IO.IOException(response.error + reason);
-                            }
+                            var reason = string.IsNullOrEmpty(response.reason)
+                                ? ""
+                                : Environment.NewLine + response.reason;
+
+                            throw new AppaIOException(response.error + reason);
                         }
                         catch (Exception)
                         {
-                            throw new System.IO.IOException(responseString);
+                            throw new AppaIOException(responseString);
                         }
-
-
-
                     }
-                    else
+
+                    if (e.InnerException != null)
                     {
-                        if (e.InnerException != null)
-                        {
-                            throw new System.IO.IOException(e.InnerException.Message);
-                        }
-                        else
-                        {
-                            throw new System.IO.IOException(e.Message);
-                        }
+                        throw new AppaIOException(e.InnerException.Message);
                     }
+
+                    throw new AppaIOException(e.Message);
                 }
             }
-
         }
-
-
-}
+    }
 }

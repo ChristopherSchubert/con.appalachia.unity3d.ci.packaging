@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Appalachia.CI.Packaging.PackageRegistry.Core
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.Core
 {
-    [System.Serializable]
+    [Serializable]
     public class ScopedRegistry
     {
         public string name;
         public string url;
-        public List<string> scopes = new List<string>();
+        public List<string> scopes = new();
 
         public bool auth;
 
@@ -22,16 +22,14 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
         public bool isValidCredential()
         {
-
-            if( string.IsNullOrEmpty(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            if (string.IsNullOrEmpty(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
             {
                 return false;
             }
 
-
-            if(auth)
+            if (auth)
             {
-                if(string.IsNullOrEmpty(token))
+                if (string.IsNullOrEmpty(token))
                 {
                     return false;
                 }
@@ -42,33 +40,28 @@ namespace Appalachia.CI.Packaging.PackageRegistry.Core
 
         public bool isValid()
         {
-            if(string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 return false;
             }
 
-            if(scopes.Count < 1)
+            if (scopes.Count < 1)
             {
                 return false;
             }
 
             scopes.RemoveAll(string.IsNullOrEmpty);
-            
-            foreach(string scope in scopes)
+
+            foreach (var scope in scopes)
             {
-                if(Uri.CheckHostName(scope) != UriHostNameType.Dns)
+                if (Uri.CheckHostName(scope) != UriHostNameType.Dns)
                 {
                     Debug.LogWarning("Invalid scope " + scope);
                     return false;
                 }
             }
 
-
             return isValidCredential();
-
-
         }
     }
-
-
 }

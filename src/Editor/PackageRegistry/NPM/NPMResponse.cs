@@ -1,6 +1,8 @@
-namespace Appalachia.CI.Packaging.PackageRegistry.NPM
+using System;
+
+namespace Appalachia.CI.Packaging.Editor.PackageRegistry.NPM
 {
-    [System.Serializable]
+    [Serializable]
     public class NPMResponse
     {
         public string error;
